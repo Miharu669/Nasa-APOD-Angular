@@ -1,0 +1,26 @@
+<div class="flex flex-col items-center bg-slate-900 text-indigo-100 min-h-screen py-10 px-4">
+    <h1 class="text-4xl font-bold mb-6">🚀 NASA APOD</h1>
+
+    <div *ngIf="apodData" class="w-full max-w-3xl bg-slate-800
+     rounded-lg shadow-md p-6">
+        <h2 class="text-2xl text-gray-200 font-semibold text-center">{{ apodData.title }}</h2>
+        <p class="text-gray-300 text-center text-sm mt-1">{{ apodData.date }}</p>
+
+        <div class="mt-4 rounded-lg overflow-hidden">
+            <img *ngIf="apodData.media_type === 'image'"
+                [src]="apodData.url"
+                [alt]="apodData.title"
+                class="w-full rounded-lg">
+        </div>
+
+        <div *ngIf="apodData.media_type === 'video'" class="mt-4 rounded-lg overflow-hidden">
+            <iframe [src]="apodData.url"
+                class="w-full h-64 rounded-lg"
+                allowfullscreen></iframe>
+        </div>
+
+        <p class="mt-6 text-gray-050 text-lg leading-relaxed">
+            {{ apodData.explanation }}
+        </p>
+    </div>
+</div>
